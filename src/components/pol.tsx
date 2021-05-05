@@ -18,8 +18,8 @@ export const Pol: FC<Props> = ({ desk, zoomLevel, scale }) => {
         <rect
           x={desk.x * scale}
           y={desk.y * scale}
-          width={desk.width * scale}
           height={desk.height * scale}
+          width={desk.width * scale}
           stroke="black"
           strokeWidth={1 * scale}
           fill="#fff"
