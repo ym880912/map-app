@@ -41,7 +41,7 @@ export function Layout({ children, classes }) {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            ONLINE MAP "DESIGN FESTA vol.53"
           </Typography>
         </Toolbar>
       </AppBar>

@@ -72,7 +72,7 @@ export function Map ({ desks, height, width }: Props) {
           </g>
           <g>
           {desks.map(d => (
-            <Pol key={d.id} desk={d} zoomLevel={10} scale={scale}/>
+            <Pol key={d.id} desk={d} zoomLevel={value.a} scale={scale}/>
           ))}
           </g>
       </svg>
