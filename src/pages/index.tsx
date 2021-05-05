@@ -1,6 +1,7 @@
-import {Map} from '../components/map'
+import React from 'react'
+import { Map } from '../components/map'
 import { GetServerSideProps } from 'next'
-import {getAllDesk} from '../mocks/mocks'
+import { getAllDesk } from '../mocks/mocks'
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const allDesk = getAllDesk()
@@ -11,7 +12,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
   }
 }
 
-export default function Home({ allDesk }) {
+export default function Home ({ allDesk }) {
   return (
     <div className="container">
       <Map desks={allDesk}/>
