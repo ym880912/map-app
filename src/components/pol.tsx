@@ -13,24 +13,24 @@ export const Pol: FC<Props> = ({ desk, zoomLevel }) => {
 
   return (
     <g>
-      {zoomLevel >= 2 &&
+      {zoomLevel >= 1.5 &&
         <rect
           x={desk.x}
           y={desk.y}
           width={desk.width}
           height={desk.height}
           stroke="black"
-          strokeWidth="1"
+          strokeWidth="0.5"
           fill="#fff"
           onClick={onClickorTouch}
           onTouchStart={onClickorTouch}
         />
       }
-      {zoomLevel >= 3 &&
+      {zoomLevel >= 2 &&
         <text
           x={desk.x + desk.width / 2}
           y={desk.y + desk.height / 2}
-          fontSize={5}
+          fontSize={2.5}
           textAnchor="middle"
           onClick={onClickorTouch}
           onTouchStart={onClickorTouch}
