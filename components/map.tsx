@@ -19,7 +19,6 @@ export function Map() {
   const [tool, setTool] = useState(TOOL_AUTO)
   const [value, setValue] = useState(INITIAL_VALUE)
   const [desks, setDesk] = useState(getAllDesk())
-  const [zoomLevel, setZoomLevel] = useState(1)
 
   useEffect(() => {
     Viewer.current.fitToViewer();
@@ -31,9 +30,7 @@ export function Map() {
       width={500} height={500}
       tool={tool} onChangeTool={setTool}
       value={value} onChangeValue={setValue}
-      onZoom={e => {
-        setZoomLevel(e.a*2)
-      }}
+      onZoom={e => {}}
       onPan={e => {}}
       onClick={event => {}}
       toolbarProps={{position: 'none'}}
@@ -56,7 +53,7 @@ export function Map() {
           </g>
           <g>
           {desks.map(d => (
-            <Pol desk={d} zoomLevel={zoomLevel}/>
+            <Pol desk={d} zoomLevel={value.a*2}/>
           ))}
           </g>
       </svg>

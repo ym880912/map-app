@@ -7,6 +7,11 @@ type Props = {
 }
 
 export const Pol: FC<Props> = ({desk, zoomLevel}) => {
+
+  function onClickorTouch(e) {
+    alert(zoomLevel)
+  }
+
   return (
     <g>
       {true &&
@@ -18,12 +23,8 @@ export const Pol: FC<Props> = ({desk, zoomLevel}) => {
           stroke="black"
           strokeWidth="1"
           fill="#fff"
-          onClick={event =>
-            alert(desk.id)
-          }
-          onTouchStart={event =>
-            alert(zoomLevel)
-          } 
+          onClick={onClickorTouch}
+          onTouchStart={onClickorTouch}
         />
       }
       {true && 
@@ -32,14 +33,10 @@ export const Pol: FC<Props> = ({desk, zoomLevel}) => {
           y={desk.y+desk.height/2}
           fontSize={5}
           textAnchor="middle"
-          onClick={event =>
-            alert(zoomLevel)
-          }
-          onTouchStart={event =>
-            alert(zoomLevel)
-          }
+          onClick={onClickorTouch}
+          onTouchStart={onClickorTouch}
         >
-          {desk.id}
+          {zoomLevel}
         </text>
       }
     </g>
