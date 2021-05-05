@@ -14,7 +14,7 @@ export const Pol: FC<Props> = ({ desk, zoomLevel, scale }) => {
 
   return (
     <g>
-      {zoomLevel >= 1.5 &&
+      {zoomLevel >= 1 &&
         <rect
           x={desk.x * scale}
           y={desk.y * scale}
