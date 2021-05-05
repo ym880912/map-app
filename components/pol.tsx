@@ -20,6 +20,9 @@ export const Pol: FC<Props> = ({desk, zoomLevel}) => {
           fill="#fff"
           onClick={event =>
             alert(desk.id)
+          }
+          onTouchStart={event =>
+            alert(zoomLevel)
           } 
         />
       }
@@ -31,7 +34,10 @@ export const Pol: FC<Props> = ({desk, zoomLevel}) => {
           textAnchor="middle"
           onClick={event =>
             alert(zoomLevel)
-          } 
+          }
+          onTouchStart={event =>
+            alert(zoomLevel)
+          }
         >
           {desk.id}
         </text>
