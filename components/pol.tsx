@@ -9,7 +9,7 @@ type Props = {
 export const Pol: FC<Props> = ({desk, zoomLevel}) => {
   return (
     <g>
-      {zoomLevel > 2 &&
+      {true &&
         <rect 
           x={desk.x} 
           y={desk.y} 
@@ -23,14 +23,14 @@ export const Pol: FC<Props> = ({desk, zoomLevel}) => {
           } 
         />
       }
-      {zoomLevel > 3 && 
+      {true && 
         <text
           x={desk.x+desk.width/2} 
           y={desk.y+desk.height/2}
           fontSize={5}
           textAnchor="middle"
           onClick={event =>
-            alert(desk.id)
+            alert(zoomLevel)
           } 
         >
           {desk.id}
