@@ -1,24 +1,17 @@
-import React, {useRef, useState, useEffect} from 'react';
+import React, {useRef, useState, useEffect} from 'react'
 import {Desk} from '../types/desk'
 import {Pol} from './pol'
-import {INITIAL_VALUE, ReactSVGPanZoom, TOOL_AUTO} from 'react-svg-pan-zoom';
-import { GetServerSideProps } from 'next'
-import {getAllDesk} from '../mocks/mocks'
+import {INITIAL_VALUE, ReactSVGPanZoom, TOOL_AUTO} from 'react-svg-pan-zoom'
 
 
 type Props = {
   desks: Desk[]
 }
 
-function setDesk() {
-  return getAllDesk();
-}
-
-export function Map() {
+export function Map({ desks }: Props) {
   const Viewer = useRef(null);
   const [tool, setTool] = useState(TOOL_AUTO)
   const [value, setValue] = useState(INITIAL_VALUE)
-  const [desks, setDesk] = useState(getAllDesk())
 
   useEffect(() => {
     Viewer.current.fitToViewer();

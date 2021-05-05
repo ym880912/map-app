@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
 export default function Home({ allDesk }) {
   return (
     <div className="container">
-      <Map />
+      <Map desks={allDesk}/>
       <style jsx>{`
         .container {
           width: 600px;
