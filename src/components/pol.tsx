@@ -4,9 +4,10 @@ import { Desk } from '../types/desk'
 type Props = {
   desk: Desk
   zoomLevel: number
+  scale: number
 }
 
-export const Pol: FC<Props> = ({ desk, zoomLevel }) => {
+export const Pol: FC<Props> = ({ desk, zoomLevel, scale }) => {
   function onClickorTouch (e) {
     alert(desk.id)
   }
@@ -15,12 +16,12 @@ export const Pol: FC<Props> = ({ desk, zoomLevel }) => {
     <g>
       {zoomLevel >= 1.5 &&
         <rect
-          x={desk.x}
-          y={desk.y}
-          width={desk.width}
-          height={desk.height}
+          x={desk.x * scale}
+          y={desk.y * scale}
+          width={desk.width * scale}
+          height={desk.height * scale}
           stroke="black"
-          strokeWidth="0.5"
+          strokeWidth={1 * scale}
           fill="#fff"
           onClick={onClickorTouch}
           onTouchStart={onClickorTouch}
@@ -28,8 +29,8 @@ export const Pol: FC<Props> = ({ desk, zoomLevel }) => {
       }
       {zoomLevel >= 2 &&
         <text
-          x={desk.x + desk.width / 2}
-          y={desk.y + desk.height / 2}
+          x={(desk.x + desk.width / 2) * scale}
+          y={(desk.y + desk.height / 2) * scale}
           fontSize={2.5}
           textAnchor="middle"
           onClick={onClickorTouch}

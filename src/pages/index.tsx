@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Map } from '../components/map'
 import { GetServerSideProps } from 'next'
 import { getAllDesk } from '../mocks/mocks'
@@ -13,9 +13,37 @@ export const getServerSideProps: GetServerSideProps = async context => {
 }
 
 export default function Home ({ allDesk }) {
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined
+  })
+
+  useEffect(() => {
+    // only execute all the code below in client side
+    if (typeof window !== 'undefined') {
+      // Handler to call on window resize
+      function handleResize () {
+        // Set window width/height to state
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight
+        })
+      }
+
+      // Add event listener
+      window.addEventListener('resize', handleResize)
+
+      // Call handler right away so state gets updated with initial window size
+      handleResize()
+
+      // Remove event listener on cleanup
+      return () => window.removeEventListener('resize', handleResize)
+    }
+  }, []) // Empty array ensures that effect is only run on mount
+
   return (
     <div className="container">
-      <Map desks={allDesk}/>
+      <Map desks={allDesk} height={windowSize.height} width={windowSize.width}/>
       <style jsx>{`
         .container {
           width: 600px;
