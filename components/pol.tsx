@@ -9,12 +9,12 @@ type Props = {
 export const Pol: FC<Props> = ({desk, zoomLevel}) => {
 
   function onClickorTouch(e) {
-    alert(zoomLevel)
+    alert(desk.id)
   }
 
   return (
     <g>
-      {true &&
+      {zoomLevel >= 2 &&
         <rect 
           x={desk.x} 
           y={desk.y} 
@@ -27,7 +27,7 @@ export const Pol: FC<Props> = ({desk, zoomLevel}) => {
           onTouchStart={onClickorTouch}
         />
       }
-      {true && 
+      {zoomLevel >= 3 && 
         <text
           x={desk.x+desk.width/2} 
           y={desk.y+desk.height/2}
@@ -36,7 +36,7 @@ export const Pol: FC<Props> = ({desk, zoomLevel}) => {
           onClick={onClickorTouch}
           onTouchStart={onClickorTouch}
         >
-          {zoomLevel}
+          {desk.id}
         </text>
       }
     </g>
