@@ -16,6 +16,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import { CatalogBox } from './CatalogBox'
 
 const drawerHeight = '50%'
+export const SEARCHBAR_HEIGHT = 56 // px指定すること
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
     top: 'auto',
     bottom: 0,
+    height: `${SEARCHBAR_HEIGHT}px`,
     transition: theme.transitions.create(['bottom'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -31,6 +33,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   appBarShift: {
     top: 'auto',
     bottom: `${drawerHeight}`,
+    height: `${SEARCHBAR_HEIGHT}px`,
     transition: theme.transitions.create(['bottom'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen

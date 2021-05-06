@@ -4,6 +4,7 @@ import { Layout } from '../components/Layout'
 import { GetServerSideProps } from 'next'
 import { getAllDesk } from '../mocks/mocks'
 import { makeStyles, fade, Theme } from '@material-ui/core/styles'
+import { SEARCHBAR_HEIGHT} from '../components/SearchBar'
 
 const useStyles = makeStyles((theme: Theme) => ({
 }))
@@ -49,7 +50,7 @@ export default function Home ({ allDesk }) {
 
   return (
     <Layout classes={classes}>
-        <Map desks={allDesk} height={windowSize.height - 65} width={windowSize.width}/>
+      <Map desks={allDesk} height={windowSize.height - SEARCHBAR_HEIGHT} width={windowSize.width}/>
     </Layout>
   )
 }
