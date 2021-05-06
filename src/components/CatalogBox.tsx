@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import { DataGrid, GridRowsProp, GridColDef } from '@material-ui/data-grid'
-import { getAllUser } from '../mocks/mocks'
+import { getAllArtist } from '../mocks/mocks'
 
-const rows: GridRowsProp = getAllUser()
+const rows: GridRowsProp = getAllArtist()
 
 const columns: GridColDef[] = [
   { field: 'deskId', headerName: '場所', width: 100 },

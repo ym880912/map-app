@@ -33,7 +33,7 @@ export function getAllDesk () {
   ]
 }
 
-export function getAllUser () {
+export function getAllArtist () {
   return [
     {
       id: 1,
