@@ -17,18 +17,17 @@ export function Map ({ desks, height, width }: Props) {
   // 横長時 1000-750 (4:3)
   // 縦長時 500-750 (2:3)
 
-  const resultHeight = height || 750;
-  const resultWidth = Math.min(1000, width || 500);
+  const resultHeight = height || 750
+  const resultWidth = Math.min(1000, width || 500)
 
-　if (resultHeight > resultWidth) {
+  if (resultHeight > resultWidth) {
     // 縦長
-    var imageHeight = resultHeight;
-    var scale = imageHeight /750
+    var imageHeight = resultHeight
+    var scale = imageHeight / 750
     var imageWidth = 1000 * scale
-
- }　else {
+  }　else {
     // 横長
-    var imageWidth = resultWidth;
+    var imageWidth = resultWidth
     var scale = resultWidth / 1000
     var imageHeight = 750 * scale
   }
@@ -48,7 +47,7 @@ export function Map ({ desks, height, width }: Props) {
       onPan={e => {}}
       onClick={event => {}}
       toolbarProps={{ position: 'none' }}
-      miniatureProps={{ width: 100, height: 75 , position: POSITION_RIGHT}}
+      miniatureProps={{ width: 100, height: 75, position: POSITION_RIGHT }}
       scaleFactorMin={0.9}
       scaleFactorMax={5}
       SVGBackground="#616264"

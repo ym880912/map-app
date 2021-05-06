@@ -3,10 +3,10 @@ import { Map } from '../components/Map'
 import { Layout } from '../components/Layout'
 import { GetServerSideProps } from 'next'
 import { getAllDesk } from '../mocks/mocks'
-import { makeStyles, fade, Theme } from '@material-ui/core/styles';
+import { makeStyles, fade, Theme } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme: Theme) => ({
-}));
+}))
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const allDesk = getAllDesk()
@@ -18,7 +18,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
 }
 
 export default function Home ({ allDesk }) {
-  const classes = useStyles();
+  const classes = useStyles()
   const [windowSize, setWindowSize] = useState({
     width: undefined,
     height: undefined
@@ -49,7 +49,7 @@ export default function Home ({ allDesk }) {
 
   return (
     <Layout classes={classes}>
-        <Map desks={allDesk} height={windowSize.height - 65}  width={windowSize.width}/>
+        <Map desks={allDesk} height={windowSize.height - 65} width={windowSize.width}/>
     </Layout>
   )
 }

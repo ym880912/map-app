@@ -16,3 +16,11 @@ export function getAllDesk () {
     { id: 'A17', x: 750, y: 340, width: 10, height: 20 }
   ]
 }
+
+export function getAllUser () {
+  return [
+    {
+
+    }
+  ]
+}
