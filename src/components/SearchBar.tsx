@@ -8,19 +8,14 @@ import InputBase from '@material-ui/core/InputBase'
 import { makeStyles, fade, Theme, useTheme } from '@material-ui/core/styles'
 
 import clsx from 'clsx'
-import List from '@material-ui/core/List'
-import Divider from '@material-ui/core/Divider'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import MailIcon from '@material-ui/icons/Mail'
 import Drawer from '@material-ui/core/Drawer'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 
-const drawerHeight = 400
+import { CatalogBox } from './CatalogBox'
+
+const drawerHeight = '50%'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -28,16 +23,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
     top: 'auto',
     bottom: 0,
-    transition: theme.transitions.create(['margin', 'height'], {
+    transition: theme.transitions.create(['bottom'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     })
   },
   appBarShift: {
     top: 'auto',
-    bottom: 0,
-    marginBottom: `${drawerHeight}px`,
-    transition: theme.transitions.create(['margin', 'height'], {
+    bottom: `${drawerHeight}`,
+    transition: theme.transitions.create(['bottom'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen
     })
@@ -61,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   drawerPaper: {
     width: '100%',
-    height: `${drawerHeight}px`
+    height: `${drawerHeight}`
   },
 
   search: {
@@ -172,23 +166,7 @@ export const SearchBar:FC = ({}) => {
             paper: classes.drawerPaper
           }}
       >
-          <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-              </ListItem>
-          ))}
-          </List>
-          <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-              </ListItem>
-          ))}
-        </List>
+        <CatalogBox />
       </Drawer>
     </div>
   )
