@@ -8,8 +8,8 @@ import { makeStyles, fade, Theme, useTheme } from '@material-ui/core/styles'
 
 import clsx from 'clsx'
 import Drawer from '@material-ui/core/Drawer'
-import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { CatalogBox } from './CatalogBox'
 
@@ -121,7 +121,7 @@ export const SearchBar:FC = ({}) => {
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
           >
-            <KeyboardArrowRightIcon />
+            <ExpandLessIcon />
           </IconButton>
           <IconButton
             color="inherit"
@@ -130,7 +130,7 @@ export const SearchBar:FC = ({}) => {
             edge="start"
             className={clsx(classes.menuButton, !open && classes.hide)}
           >
-            <KeyboardArrowDownIcon />
+            <ExpandMoreIcon />
           </IconButton>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
