@@ -27,11 +27,11 @@ export const Pol: FC<Props> = ({ desk, zoomLevel, scale }) => {
           onTouchStart={onClickorTouch}
         />
       }
-      {zoomLevel >= 2 &&
+      {zoomLevel >= 1.5 &&
         <text
           x={(desk.x + desk.width / 2) * scale}
           y={(desk.y + desk.height / 2) * scale}
-          fontSize={2.5}
+          fontSize={3}
           textAnchor="middle"
           onClick={onClickorTouch}
           onTouchStart={onClickorTouch}
