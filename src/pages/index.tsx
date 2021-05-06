@@ -4,7 +4,7 @@ import { Layout } from '../components/Layout'
 import { GetServerSideProps } from 'next'
 import { getAllDesk } from '../mocks/mocks'
 import { makeStyles, fade, Theme } from '@material-ui/core/styles'
-import { SEARCHBAR_HEIGHT} from '../components/SearchBar'
+import { SEARCHBAR_HEIGHT } from '../components/SearchBar'
 
 const useStyles = makeStyles((theme: Theme) => ({
 }))
