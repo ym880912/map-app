@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { Desk } from '../types/desk'
-import { Pol } from './pol'
+import { Pol } from './Pol'
 import { INITIAL_VALUE, ReactSVGPanZoom, TOOL_AUTO, POSITION_RIGHT } from 'react-svg-pan-zoom'
 
 type Props = {
