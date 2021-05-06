@@ -16,6 +16,9 @@ const useStyles = makeStyles({
   table: {
     '&.MuiDataGrid-root .MuiDataGrid-cell:focus-within': {
       outline: 'none'
+    },
+    '&.MuiDataGrid-root .MuiDataGrid-colCell:focus': {
+      outline: 'none'
     }
   }
 })
