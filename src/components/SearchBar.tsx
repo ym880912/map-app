@@ -2,14 +2,12 @@ import React, { FC } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
-import Typography from '@material-ui/core/Typography'
 import SearchIcon from '@material-ui/icons/Search'
 import InputBase from '@material-ui/core/InputBase'
 import { makeStyles, fade, Theme, useTheme } from '@material-ui/core/styles'
 
 import clsx from 'clsx'
 import Drawer from '@material-ui/core/Drawer'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 
@@ -44,13 +42,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   hide: {
     display: 'none'
-  },
-  title: {
-    flexGrow: 1,
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block'
-    }
   },
   drawer: {
     width: '100%',
@@ -117,7 +108,6 @@ export const SearchBar:FC = ({}) => {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
       <AppBar
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open
@@ -142,9 +132,6 @@ export const SearchBar:FC = ({}) => {
           >
             <KeyboardArrowDownIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            DESIGN FESTA vol.53
-          </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

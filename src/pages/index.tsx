@@ -3,11 +3,8 @@ import { Map } from '../components/Map'
 import { Layout } from '../components/Layout'
 import { GetServerSideProps } from 'next'
 import { getAllDesk } from '../mocks/mocks'
-import { makeStyles, fade, Theme } from '@material-ui/core/styles'
 import { SEARCHBAR_HEIGHT } from '../components/SearchBar'
-
-const useStyles = makeStyles((theme: Theme) => ({
-}))
+import { HEADERBAR_HEIGHT } from '../components/HeaderBar'
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const allDesk = getAllDesk()
@@ -19,7 +16,6 @@ export const getServerSideProps: GetServerSideProps = async context => {
 }
 
 export default function Home ({ allDesk }) {
-  const classes = useStyles()
   const [windowSize, setWindowSize] = useState({
     width: undefined,
     height: undefined
@@ -49,8 +45,12 @@ export default function Home ({ allDesk }) {
   }, []) // Empty array ensures that effect is only run on mount
 
   return (
-    <Layout classes={classes}>
-      <Map desks={allDesk} height={windowSize.height - SEARCHBAR_HEIGHT} width={windowSize.width}/>
+    <Layout>
+      <Map
+        desks={allDesk}
+        height={windowSize.height - SEARCHBAR_HEIGHT - HEADERBAR_HEIGHT}
+        width={windowSize.width}
+      />
     </Layout>
   )
 }
