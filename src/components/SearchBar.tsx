@@ -12,9 +12,10 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { CatalogBox } from './CatalogBox'
+import { HEADERBAR_HEIGHT } from './HeaderBar'
 
-const drawerHeight = '50%'
 export const SEARCHBAR_HEIGHT = 56 // px指定すること
+const drawerHeight = `calc(50% - ${SEARCHBAR_HEIGHT}px - ${HEADERBAR_HEIGHT}px)`
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

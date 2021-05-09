@@ -10,10 +10,27 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Image from 'next/image'
 
+const ImageSize = 70;
+
 const useStyles = makeStyles({
   root: {
-    width: '200px',
-    Height: '1000px',
+    marginBottom: '1px',
+    width: '100%',
+    height: '70px',
+    display: 'flex',
+  },
+  imageBox: {
+    width: `${ImageSize}px`,
+    height: `${ImageSize}px`,
+  },
+  details: {
+    width: `calc(100% - ${ImageSize}px)`,
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '10px',
+    "&:last-child": {
+      paddingBottom: '10px',
+    }
   },
   introduction: {
     overflow: "hidden",
@@ -32,29 +49,45 @@ export  function ArtistCard({artist}) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
-      <Image
-        height={200}
-        width={200} 
-        src={artist.imageUrl}
-        loader = {myLoader}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          {artist.name}
-        </Typography>
-        <Typography
-          variant="body2" color="textSecondary" component="p"
-          className={classes.introduction}
-        >
-          {artist.information}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-      </CardActions>
+    <Card className={classes.root} raised>
+      <div className = {classes.imageBox}>
+        <Image
+          height={ImageSize}
+          width={ImageSize} 
+          src={artist.imageUrl}
+          loader = {myLoader}
+        />
+      </div>
+
+        <CardContent className={classes.details}>
+          <Typography variant="h6" component="h6">
+            {artist.name}
+          </Typography>
+          {/* <Typography
+            variant="body2" color="textSecondary" component="p"
+            className={classes.introduction}
+          >
+            {artist.date}
+          </Typography> */}
+          <Typography
+            variant="body2" color="textSecondary" component="p"
+            className={classes.introduction}
+          >
+            {artist.tag.join(', ')}
+          </Typography>
+          {/* <Typography
+            variant="body2" color="textSecondary" component="p"
+            className={classes.introduction}
+          >
+            {artist.information}
+          </Typography> */}
+        </CardContent>
+        {/* <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon />
+          </IconButton>
+        </CardActions> */}
+
     </Card>
   )
 }

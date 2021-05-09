@@ -47,6 +47,7 @@ export default function Home ({ allArtist }) {
   return (
     <Layout>
       <ArtistCard artist={allArtist[0]} />
+      <ArtistCard artist={allArtist[1]} />
     </Layout>
   )
 }
