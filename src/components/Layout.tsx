@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { SearchBar } from './SearchBar'
 import { HeaderBar, HEADERBAR_HEIGHT } from './HeaderBar'
 import { makeStyles, fade, Theme } from '@material-ui/core/styles'
+import { InformationModal } from './InformationModal'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {},
@@ -18,6 +19,7 @@ export function Layout ({ children }) {
         {children}
       </main>
       <SearchBar />
+      <InformationModal />
     </div>
   )
 }

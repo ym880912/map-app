@@ -108,3 +108,10 @@ export function getAllArtist () {
 
   ]
 }
+
+export function getArtist(id: number) {
+  const allArtist = getAllArtist()
+  const target = allArtist.filter(a => a.id === id)
+  console.log(id, target[0])
+  return target[0]
+}

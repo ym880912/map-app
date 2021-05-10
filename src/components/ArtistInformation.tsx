@@ -10,8 +10,6 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import Image from 'next/image'
-import { useDispatch } from 'react-redux'
-import artistInformationSlice from '../ducks/artistInformation/slice'
 
 const ImageSize = 70;
 
@@ -19,7 +17,7 @@ const useStyles = makeStyles({
   root: {
     marginBottom: '1px',
     width: '100%',
-    height: '70px',
+    minHeight: '200px',
     display: 'flex',
   },
   imageBox: {
@@ -40,20 +38,22 @@ const useStyles = makeStyles({
   actionButton: {
     padding: '5px',
   },
+
+  introduction: {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    display: "-webkit-box",
+    "-webkit-line-clamp": 3,
+    "-webkit-box-orient": "vertical"
+  },
 })
 
 const myLoader = ({ src }) => {
   return src
 }
 
-export  function ArtistCard({artist}) {
-  const dispatch = useDispatch() 
-  const classes = useStyles()
-
-  const openInformation = (e)  => {
-    e.stopPropagation()
-    dispatch(artistInformationSlice.actions.open(artist.id))
-  }
+export  function ArtistInformation({artist}) {
+  const classes = useStyles();
 
   return (
     <Card
@@ -75,28 +75,17 @@ export  function ArtistCard({artist}) {
       </div>
 
         <CardContent className={classes.details}>
-          <Typography 
-            variant="h6"
-            component="h6"
-            noWrap
-          >
+          <Typography variant="h6" component="h6">
             {artist.name}
           </Typography>
           <Typography
             variant="body2" color="textSecondary" component="p"
-            noWrap
+            className={classes.introduction}
           >
             {artist.tag.join(', ')}
           </Typography>
         </CardContent>
         <CardActions className={classes.actions} disableSpacing>
-          <IconButton
-            className={classes.actionButton}
-            aria-label="information"
-            onClick={openInformation}
-          >
-            <InfoOutlinedIcon/>
-          </IconButton>
           <IconButton
             className={classes.actionButton}
             aria-label="add to favorites"

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { ArtistCard } from '../components/ArtistCard'
+import { ArtistInformation } from '../components/ArtistInformation'
 import { Layout } from '../components/Layout'
 import { GetServerSideProps } from 'next'
 import { getAllArtist } from '../mocks/mocks'
-import { SEARCHBAR_HEIGHT } from '../components/SearchBar'
-import { HEADERBAR_HEIGHT } from '../components/HeaderBar'
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const allArtist = getAllArtist()
@@ -46,8 +44,8 @@ export default function Home ({ allArtist }) {
 
   return (
     <Layout>
-      <ArtistCard artist={allArtist[0]} />
-      <ArtistCard artist={allArtist[1]} />
+      <ArtistInformation artist={allArtist[0]} />
+      <ArtistInformation artist={allArtist[1]} />
     </Layout>
   )
 }
