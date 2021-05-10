@@ -2,8 +2,12 @@ import React, { useRef, useState, useEffect } from 'react'
 import { Desk } from '../types/desk'
 import { Pol } from './Pol'
 import { MapImage } from './MapImage'
-import { INITIAL_VALUE, ReactSVGPanZoom, TOOL_AUTO, POSITION_RIGHT } from 'react-svg-pan-zoom'
+import { ReactSVGPanZoom, TOOL_AUTO, POSITION_NONE } from 'react-svg-pan-zoom'
 import { makeStyles, Theme } from '@material-ui/core/styles'
+import { useDispatch } from 'react-redux'
+import { useMapState } from '../ducks/map/selectors'
+import mapSlice from '../ducks/map/slice'
+
 
 type Props = {
   desks: Desk[]
@@ -23,8 +27,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 export function Map ({ desks, height, width }: Props) {
   const Viewer = useRef(null)
   const [tool, setTool] = useState(TOOL_AUTO)
-  const [value, setValue] = useState(INITIAL_VALUE)
+  const value = useMapState().map.value
   const classes = useStyles()
+  const dispatch = useDispatch()
 
   // 横長時 1000-750 (4:3)
   // 縦長時 500-750 (2:3)
@@ -48,6 +53,10 @@ export function Map ({ desks, height, width }: Props) {
     Viewer.current.fitToViewer()
   }, [])
 
+  const setValue = (value) => {
+    dispatch(mapSlice.actions.setValue(value))
+  }
+
   return (
     <div className={classes.root}>
       <ReactSVGPanZoom
@@ -59,8 +68,8 @@ export function Map ({ desks, height, width }: Props) {
         onZoom={e => {}}
         onPan={e => {}}
         onClick={event => {}}
-        toolbarProps={{ position: 'none' }}
-        miniatureProps={{ position: 'none' }}
+        toolbarProps={{ position: POSITION_NONE }}
+        miniatureProps={{ position: POSITION_NONE }}
         scaleFactorMin={0.9}
         scaleFactorMax={5}
         SVGBackground="#616264"

@@ -17,6 +17,7 @@ export const CatalogBox: FC = () => {
     <div className={classes.root}>
     {artists.map(a =>(
       <ArtistCard 
+        key={a.id}
         artist={a}
       />
     ))}
