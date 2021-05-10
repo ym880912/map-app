@@ -60,7 +60,7 @@ export function Map ({ desks, height, width }: Props) {
         onPan={e => {}}
         onClick={event => {}}
         toolbarProps={{ position: 'none' }}
-        miniatureProps={{ width: 100, height: 75, position: POSITION_RIGHT }}
+        miniatureProps={{ position: 'none' }}
         scaleFactorMin={0.9}
         scaleFactorMax={5}
         SVGBackground="#616264"

@@ -12,10 +12,9 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { CatalogBox } from './CatalogBox'
-import { HEADERBAR_HEIGHT } from './HeaderBar'
 
-export const SEARCHBAR_HEIGHT = 56 // px指定すること
-const drawerHeight = `calc(50% - ${SEARCHBAR_HEIGHT}px - ${HEADERBAR_HEIGHT}px)`
+export const SEARCHBAR_HEIGHT = 50 // px指定すること
+const drawerHeight = `calc(50% - ${SEARCHBAR_HEIGHT}px)`
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -37,6 +36,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen
     })
+  },
+  tool: {
+    minHeight: `${SEARCHBAR_HEIGHT}px`,
   },
   menuButton: {
     marginRight: theme.spacing(2)
@@ -114,7 +116,7 @@ export const SearchBar:FC = ({}) => {
           [classes.appBarShift]: open
         })}
       >
-        <Toolbar>
+        <Toolbar className={classes.tool}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
