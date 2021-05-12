@@ -33,8 +33,6 @@ export const fetchDesksByEventId = createAsyncThunk<Desk[], number, any>(
   }
 )
 
-// export const getDeskById = createAction<string | undefined>('getDeskById')
-
 const desksSlice = createSlice({
   name: 'desks',
   initialState,
@@ -47,9 +45,6 @@ const desksSlice = createSlice({
     builder.addCase(fetchDesksByEventId.fulfilled, (state, action) => {
       state.list = action.payload
     })
-    // builder.addCase(getDeskById, (state, action) => {
-    //   state.desks.filter(d => d.id === action.payload)[0]
-    // })
   }
 })
 

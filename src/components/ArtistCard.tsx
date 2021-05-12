@@ -61,9 +61,9 @@ export function ArtistCard ({ artist }) {
 
     console.log(desk, artist)
     dispatch(mapSlice.actions.focus({
-      x: desk.x,
-      y: desk.y,
-      zoomLevel: 1.5
+      x: desk.x + desk.width/2,
+      y: desk.y + desk.height/2,
+      zoomLevel: 3
     }))
   }
 

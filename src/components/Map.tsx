@@ -8,12 +8,7 @@ import { useDispatch } from 'react-redux'
 import { useMapState } from '../ducks/map/selectors'
 import { useDesksState } from '../ducks/desks/selectors'
 import mapSlice from '../ducks/map/slice'
-
-type Props = {
-  desks: Desk[]
-  height?: number,
-  width?: number,
-}
+import { SettingsEthernet } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -24,31 +19,35 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }))
 
-export function Map ({ height, width }: Props) {
+export function Map () {
+
+  function handleResize () {
+    // Set window width/height to state
+    dispatch(mapSlice.actions.handleReSize())
+  }
+
+  useEffect(() => {
+    // only execute all the code below in client side
+    if (typeof window !== 'undefined') {
+      // Handler to call on window resize
+
+      // Add event listener
+      window.addEventListener('resize', handleResize)
+
+      // Call handler right away so state gets updated with initial window size
+      handleResize()
+
+      // Remove event listener on cleanup
+      return () => window.removeEventListener('resize', handleResize)
+    }
+  }, []) // Empty array ensures that effect is only run on mount
+
   const Viewer = useRef(null)
   const [tool, setTool] = useState(TOOL_AUTO)
-  const value = useMapState().map.value
+  const state = useMapState()
   const desks = useDesksState()
   const classes = useStyles()
   const dispatch = useDispatch()
-
-  // 横長時 1000-750 (4:3)
-  // 縦長時 500-750 (2:3)
-
-  const resultHeight = height || 750
-  const resultWidth = Math.min(1000, width || 500)
-
-  if (resultHeight > resultWidth) {
-    // 縦長
-    var imageHeight = resultHeight
-    var scale = imageHeight / 750
-    var imageWidth = 1000 * scale
-  }　else {
-    // 横長
-    var imageWidth = resultWidth
-    var scale = resultWidth / 1000
-    var imageHeight = 750 * scale
-  }
 
   useEffect(() => {
     Viewer.current.fitToViewer()
@@ -62,10 +61,10 @@ export function Map ({ height, width }: Props) {
     <div className={classes.root}>
       <ReactSVGPanZoom
         ref={Viewer}
-        height={resultHeight}
-        width={resultWidth}
+        height={state.height}
+        width={state.width}
         tool={tool} onChangeTool={setTool}
-        value={value} onChangeValue={setValue}
+        value={state.value} onChangeValue={setValue}
         onZoom={e => {}}
         onPan={e => {}}
         onClick={event => {}}
@@ -80,20 +79,20 @@ export function Map ({ height, width }: Props) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           version="1.0"
-          height={imageHeight}
-          width={imageWidth}
+          height={state.imageHeight}
+          width={state.imageWidth}
           id="svg2">
           <defs
             id="defs5" />
             <g>
               <MapImage
-                height={imageHeight}
-                width={imageWidth}
+                height={state.imageHeight}
+                width={state.imageWidth}
               />
             </g>
             <g>
             {desks.map(d => (
-              <Pol key={d.id} desk={d} zoomLevel={value.a} scale={scale}/>
+              <Pol key={d.id} desk={d} zoomLevel={state.value.a} scale={state.scale}/>
             ))}
             </g>
         </svg>
