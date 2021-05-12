@@ -10,6 +10,10 @@ import clsx from 'clsx'
 import Drawer from '@material-ui/core/Drawer'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
 
 import { CatalogBox } from './CatalogBox'
 
@@ -62,7 +66,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25)
     },
-    marginLeft: 0,
+    marginLeft: '10px',
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
@@ -93,21 +97,38 @@ const useStyles = makeStyles((theme: Theme) => ({
         width: '20ch'
       }
     }
-  }
+  },
+
+  toggleButton: {
+    padding: '7px',
+    color: 'inherit',
+    borderColor: fade(theme.palette.common.white, 0.15),
+    '&.Mui-selected':{
+      color: 'inherit',
+      backgroundColor: fade(theme.palette.common.white, 0.15), 
+    },
+    '&.Mui-selected:hover':{
+      color: 'inherit',
+      backgroundColor: fade(theme.palette.common.white, 0.15), 
+    }
+  },
 }))
 
 export const SearchBar:FC = ({}) => {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
+  const [listType, setlistType] = React.useState<string | null>('all');
   const theme = useTheme()
 
   const handleDrawerOpen = () => {
     setOpen(true)
   }
-
   const handleDrawerClose = () => {
     setOpen(false)
   }
+  const handleListType = (event: React.MouseEvent<HTMLElement>, newListType: string | null) => {
+    setlistType(newListType);
+  };
 
   return (
     <div className={classes.root}>
@@ -128,13 +149,32 @@ export const SearchBar:FC = ({}) => {
           </IconButton>
           <IconButton
             color="inherit"
-            aria-label="open drawer"
+            aria-label="close drawer"
             onClick={handleDrawerClose}
             edge="start"
             className={clsx(classes.menuButton, !open && classes.hide)}
           >
             <ExpandMoreIcon />
           </IconButton>
+          <ToggleButtonGroup
+            value={listType}
+            exclusive
+            onChange={handleListType}
+            className={clsx(!open && classes.hide)}
+          >
+            <ToggleButton 
+              value="all"
+              className={classes.toggleButton}
+            >
+              <MenuBookIcon />
+            </ToggleButton>
+            <ToggleButton 
+              value="fav"
+              className={classes.toggleButton}
+            >
+              <StarBorderOutlinedIcon />
+            </ToggleButton>
+          </ToggleButtonGroup>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

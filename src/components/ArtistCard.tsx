@@ -12,6 +12,8 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
 import artistInformationSlice from '../ducks/artistInformation/slice'
+import mapSlice from '../ducks/map/slice'
+import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
 
 const ImageSize = 70;
 
@@ -60,7 +62,7 @@ export  function ArtistCard({artist}) {
       className={classes.root}
       onClick={
         () =>{
-          alert(artist.id)
+          dispatch(mapSlice.actions.focus({x:500, y:375, zoomLevel:3}))
         }
       }
       raised
@@ -74,36 +76,36 @@ export  function ArtistCard({artist}) {
         />
       </div>
 
-        <CardContent className={classes.details}>
-          <Typography 
-            variant="h6"
-            component="h6"
-            noWrap
-          >
-            {artist.name}
-          </Typography>
-          <Typography
-            variant="body2" color="textSecondary" component="p"
-            noWrap
-          >
-            {artist.tag.join(', ')}
-          </Typography>
-        </CardContent>
-        <CardActions className={classes.actions} disableSpacing>
-          <IconButton
-            className={classes.actionButton}
-            aria-label="information"
-            onClick={openInformation}
-          >
-            <InfoOutlinedIcon/>
-          </IconButton>
-          <IconButton
-            className={classes.actionButton}
-            aria-label="add to favorites"
-          >
-            <FavoriteIcon/>
-          </IconButton>
-        </CardActions>
+      <CardContent className={classes.details}>
+        <Typography 
+          variant="h6"
+          component="h6"
+          noWrap
+        >
+          {artist.name}
+        </Typography>
+        <Typography
+          variant="body2" color="textSecondary" component="p"
+          noWrap
+        >
+          {artist.tag.join(', ')}
+        </Typography>
+      </CardContent>
+      <CardActions className={classes.actions} disableSpacing>
+        <IconButton
+          className={classes.actionButton}
+          aria-label="information"
+          onClick={openInformation}
+        >
+          <InfoOutlinedIcon/>
+        </IconButton>
+        <IconButton
+          className={classes.actionButton}
+          aria-label="add to favorites"
+        >
+          <StarBorderOutlinedIcon/>
+        </IconButton>
+      </CardActions>
     </Card>
   )
 }

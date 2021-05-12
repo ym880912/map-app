@@ -2,11 +2,12 @@ import React, { useRef, useState, useEffect } from 'react'
 import { Desk } from '../types/desk'
 import { Pol } from './Pol'
 import { MapImage } from './MapImage'
-import { ReactSVGPanZoom, TOOL_AUTO, POSITION_NONE } from 'react-svg-pan-zoom'
+import { ReactSVGPanZoom, TOOL_AUTO, POSITION_NONE, setPointOnViewerCenter } from 'react-svg-pan-zoom'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import { useDispatch } from 'react-redux'
 import { useMapState } from '../ducks/map/selectors'
 import mapSlice from '../ducks/map/slice'
+import Button from '@material-ui/core/Button';
 
 
 type Props = {
@@ -74,6 +75,7 @@ export function Map ({ desks, height, width }: Props) {
         scaleFactorMax={5}
         SVGBackground="#616264"
         className={classes.zoom}
+        detectAutoPan={false}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

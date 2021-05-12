@@ -8,6 +8,8 @@ const artists = getAllArtist()
 const useStyles = makeStyles({
   root: {
     // backgroundColor: '#22242A',
+    paddingLeft: '1px',
+    paddingRight: '1px',
   },
 })
 

@@ -16,19 +16,16 @@ const artistInformationSlice = createSlice({
   name: 'artistInformation',
   initialState,
   reducers: {
-    setId: (state, action: PayloadAction<number>) => ({
-      ...state,
-      id: action.payload,
-    }),
-    open: (state, action: PayloadAction<number>) => ({
-      ...state,
-      id: action.payload,
-      isOpen: true,
-    }),
-    close: (state, action: PayloadAction) => ({
-      ...state,
-      isOpen: false,
-    }),
+    setId(state, action: PayloadAction<number>) {
+      state.id = action.payload
+    },
+    open(state, action: PayloadAction<number>) {
+      state.id = action.payload
+      state.isOpen = true
+    },
+    close(state) {
+      state.isOpen = false
+    },
   },
 })
 

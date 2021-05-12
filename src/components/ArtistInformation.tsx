@@ -10,23 +10,21 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import Image from 'next/image'
+import Grid from '@material-ui/core/Grid';
 
 const ImageSize = 70;
 
 const useStyles = makeStyles({
   root: {
-    marginBottom: '1px',
-    width: '100%',
-    minHeight: '200px',
-    display: 'flex',
+    width: '300px',
+    padding: '10px',
+    paddingBottom: '24px',
   },
   imageBox: {
-    width: `${ImageSize}px`,
-    height: `${ImageSize}px`,
-    padding: '1px',
+    flexGrow: 1,
   },
   details: {
-    width: `calc(100% - ${ImageSize}px - 80px)`,
+    maxHeight: '500px',
     display: 'flex',
     flexDirection: 'column',
     padding: '10px',
@@ -39,13 +37,17 @@ const useStyles = makeStyles({
     padding: '5px',
   },
 
-  introduction: {
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    display: "-webkit-box",
-    "-webkit-line-clamp": 3,
-    "-webkit-box-orient": "vertical"
+  informationBox: {
+    maxHeight: '400px',
+    overflow: 'scroll',
+    paddingTop: '0px',
+    paddingBottom: '0px',
+    '&:last-child': {
+      paddingBottom: '0px',
+    } 
   },
+  tag: {},
+  information: {},
 })
 
 const myLoader = ({ src }) => {
@@ -58,41 +60,52 @@ export  function ArtistInformation({artist}) {
   return (
     <Card
       className={classes.root}
-      onClick={
-        () =>{
-          alert(artist.id)
-        }
-      }
       raised
     >
-      <div className = {classes.imageBox}>
-        <Image
-          height={ImageSize-2}
-          width={ImageSize-2} 
-          src={artist.imageUrl}
-          loader = {myLoader}
-        />
-      </div>
-
-        <CardContent className={classes.details}>
-          <Typography variant="h6" component="h6">
+      <Grid container>
+        <Grid item
+          xs={6} 
+          className = {classes.imageBox}
+        >
+          <Image
+            height={120}
+            width={120} 
+            src={artist.imageUrl}
+            loader = {myLoader}
+          />
+        </Grid>
+        <Grid item
+          xs={6}
+        >
+          <Typography variant="h5" component="h2">
             {artist.name}
           </Typography>
           <Typography
             variant="body2" color="textSecondary" component="p"
-            className={classes.introduction}
+            className={classes.tag}
           >
             {artist.tag.join(', ')}
           </Typography>
-        </CardContent>
-        <CardActions className={classes.actions} disableSpacing>
-          <IconButton
-            className={classes.actionButton}
-            aria-label="add to favorites"
+        </Grid>
+      </Grid>
+      <CardContent className={classes.informationBox}>
+        {Object.keys(artist.information).map((key) =>
+          <div
+            key={key}
           >
-            <FavoriteIcon/>
-          </IconButton>
-        </CardActions>
+            <Typography
+              paragraph
+            >
+              {key}:
+            </Typography>
+            <Typography
+              paragraph
+            >
+              {artist.information[key]}
+            </Typography>
+          </div>
+        )}
+      </CardContent>
     </Card>
   )
 }
