@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Desk } from '../types/desk'
+import { Desk } from '../ducks/desks/slice'
 
 type Props = {
   desk: Desk

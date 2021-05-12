@@ -1,14 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Desk } from '../types/desk'
+import { Desk } from '../ducks/desks/slice'
 import { Pol } from './Pol'
 import { MapImage } from './MapImage'
 import { ReactSVGPanZoom, TOOL_AUTO, POSITION_NONE, setPointOnViewerCenter } from 'react-svg-pan-zoom'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import { useDispatch } from 'react-redux'
 import { useMapState } from '../ducks/map/selectors'
+import { useDesksState } from '../ducks/desks/selectors'
 import mapSlice from '../ducks/map/slice'
-import Button from '@material-ui/core/Button';
-
 
 type Props = {
   desks: Desk[]
@@ -25,10 +24,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }))
 
-export function Map ({ desks, height, width }: Props) {
+export function Map ({ height, width }: Props) {
   const Viewer = useRef(null)
   const [tool, setTool] = useState(TOOL_AUTO)
   const value = useMapState().map.value
+  const desks = useDesksState().desks.desks
   const classes = useStyles()
   const dispatch = useDispatch()
 
