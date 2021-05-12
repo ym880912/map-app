@@ -47,7 +47,7 @@ export default function Home ({ allDesk }) {
   return (
     <Layout>
       <Map
-        desks={allDesk}
+        // desks={allDesk}
         height={windowSize.height - SEARCHBAR_HEIGHT - HEADERBAR_HEIGHT}
         width={windowSize.width}
       />

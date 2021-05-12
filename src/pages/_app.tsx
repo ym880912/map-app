@@ -1,4 +1,4 @@
-import React  from 'react'
+import React from 'react'
 import Head from 'next/head'
 import App, { AppProps, AppContext } from 'next/app'
 import { ThemeProvider } from '@material-ui/core/styles'
@@ -37,14 +37,14 @@ export default function MyApp (props) {
 }
 
 MyApp.getInitialProps = async (appContext: AppContext) => {
-  const appProps = await App.getInitialProps(appContext);
-  //initialise redux store on server side
-  const reduxStore = await initialiseStore();
+  const appProps = await App.getInitialProps(appContext)
+  // initialise redux store on server side
+  const reduxStore = await initialiseStore()
 
   appProps.pageProps = {
     ...appProps.pageProps,
-    initialReduxState: reduxStore.getState(),
-  };
+    initialReduxState: reduxStore.getState()
+  }
 
-  return appProps;
-};
+  return appProps
+}

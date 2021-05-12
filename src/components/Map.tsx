@@ -28,7 +28,7 @@ export function Map ({ height, width }: Props) {
   const Viewer = useRef(null)
   const [tool, setTool] = useState(TOOL_AUTO)
   const value = useMapState().map.value
-  const desks = useDesksState().desks.desks
+  const desks = useDesksState()
   const classes = useStyles()
   const dispatch = useDispatch()
 

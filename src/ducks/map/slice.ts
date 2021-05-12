@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { INITIAL_VALUE, setPointOnViewerCenter } from 'react-svg-pan-zoom'
 
 export type MapState = {
@@ -12,25 +12,25 @@ export type ForcusPayload = {
 }
 
 export const initialState: MapState = {
-  value: INITIAL_VALUE,
+  value: INITIAL_VALUE
 }
 
 const mapSlice = createSlice({
   name: 'map',
   initialState,
   reducers: {
-    setValue(state, action: PayloadAction<any>) {
-      state.value =  action.payload
+    setValue (state, action: PayloadAction<any>) {
+      state.value = action.payload
     },
-    focus(state, action: PayloadAction<ForcusPayload>) {
+    focus (state, action: PayloadAction<ForcusPayload>) {
       state.value = setPointOnViewerCenter(
         state.value,
         action.payload.x,
         action.payload.y,
         action.payload.zoomLevel
       )
-    },
-  },
+    }
+  }
 })
 
 export default mapSlice

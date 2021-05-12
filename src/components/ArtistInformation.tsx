@@ -1,40 +1,40 @@
-import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import Typography from '@material-ui/core/Typography';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import IconButton from '@material-ui/core/IconButton';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import React from 'react'
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import clsx from 'clsx'
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
+import Typography from '@material-ui/core/Typography'
+import CardContent from '@material-ui/core/CardContent'
+import CardActions from '@material-ui/core/CardActions'
+import IconButton from '@material-ui/core/IconButton'
+import FavoriteIcon from '@material-ui/icons/Favorite'
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
 import Image from 'next/image'
-import Grid from '@material-ui/core/Grid';
+import Grid from '@material-ui/core/Grid'
 
-const ImageSize = 70;
+const ImageSize = 70
 
 const useStyles = makeStyles({
   root: {
     width: '300px',
     padding: '10px',
-    paddingBottom: '24px',
+    paddingBottom: '24px'
   },
   imageBox: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   details: {
     maxHeight: '500px',
     display: 'flex',
     flexDirection: 'column',
-    padding: '10px',
+    padding: '10px'
   },
   actions: {
     width: '80px',
-    display: 'flex',
+    display: 'flex'
   },
   actionButton: {
-    padding: '5px',
+    padding: '5px'
   },
 
   informationBox: {
@@ -43,19 +43,19 @@ const useStyles = makeStyles({
     paddingTop: '0px',
     paddingBottom: '0px',
     '&:last-child': {
-      paddingBottom: '0px',
-    } 
+      paddingBottom: '0px'
+    }
   },
   tag: {},
-  information: {},
+  information: {}
 })
 
 const myLoader = ({ src }) => {
   return src
 }
 
-export  function ArtistInformation({artist}) {
-  const classes = useStyles();
+export function ArtistInformation ({ artist }) {
+  const classes = useStyles()
 
   return (
     <Card
@@ -64,12 +64,12 @@ export  function ArtistInformation({artist}) {
     >
       <Grid container>
         <Grid item
-          xs={6} 
+          xs={6}
           className = {classes.imageBox}
         >
           <Image
             height={120}
-            width={120} 
+            width={120}
             src={artist.imageUrl}
             loader = {myLoader}
           />

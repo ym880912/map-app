@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export type ArtistInformationState = {
   id?: number,
@@ -9,24 +9,24 @@ export type ArtistInformationState = {
 export const initialState: ArtistInformationState = {
   id: null,
   isOpen: false,
-  loading: false,
+  loading: false
 }
 
 const artistInformationSlice = createSlice({
   name: 'artistInformation',
   initialState,
   reducers: {
-    setId(state, action: PayloadAction<number>) {
+    setId (state, action: PayloadAction<number>) {
       state.id = action.payload
     },
-    open(state, action: PayloadAction<number>) {
+    open (state, action: PayloadAction<number>) {
       state.id = action.payload
       state.isOpen = true
     },
-    close(state) {
+    close (state) {
       state.isOpen = false
-    },
-  },
+    }
+  }
 })
 
 export default artistInformationSlice

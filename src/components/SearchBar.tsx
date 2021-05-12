@@ -8,12 +8,12 @@ import { makeStyles, fade, Theme, useTheme } from '@material-ui/core/styles'
 
 import clsx from 'clsx'
 import Drawer from '@material-ui/core/Drawer'
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ToggleButton from '@material-ui/lab/ToggleButton';
-import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
-import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import ToggleButton from '@material-ui/lab/ToggleButton'
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup'
+import MenuBookIcon from '@material-ui/icons/MenuBook'
+import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined'
 
 import { CatalogBox } from './CatalogBox'
 
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     })
   },
   tool: {
-    minHeight: `${SEARCHBAR_HEIGHT}px`,
+    minHeight: `${SEARCHBAR_HEIGHT}px`
   },
   menuButton: {
     marginRight: theme.spacing(2)
@@ -103,21 +103,21 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: '7px',
     color: 'inherit',
     borderColor: fade(theme.palette.common.white, 0.15),
-    '&.Mui-selected':{
+    '&.Mui-selected': {
       color: 'inherit',
-      backgroundColor: fade(theme.palette.common.white, 0.15), 
+      backgroundColor: fade(theme.palette.common.white, 0.15)
     },
-    '&.Mui-selected:hover':{
+    '&.Mui-selected:hover': {
       color: 'inherit',
-      backgroundColor: fade(theme.palette.common.white, 0.15), 
+      backgroundColor: fade(theme.palette.common.white, 0.15)
     }
-  },
+  }
 }))
 
 export const SearchBar:FC = ({}) => {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
-  const [listType, setlistType] = React.useState<string | null>('all');
+  const [listType, setlistType] = React.useState<string | null>('all')
   const theme = useTheme()
 
   const handleDrawerOpen = () => {
@@ -127,8 +127,8 @@ export const SearchBar:FC = ({}) => {
     setOpen(false)
   }
   const handleListType = (event: React.MouseEvent<HTMLElement>, newListType: string | null) => {
-    setlistType(newListType);
-  };
+    setlistType(newListType)
+  }
 
   return (
     <div className={classes.root}>
@@ -162,13 +162,13 @@ export const SearchBar:FC = ({}) => {
             onChange={handleListType}
             className={clsx(!open && classes.hide)}
           >
-            <ToggleButton 
+            <ToggleButton
               value="all"
               className={classes.toggleButton}
             >
               <MenuBookIcon />
             </ToggleButton>
-            <ToggleButton 
+            <ToggleButton
               value="fav"
               className={classes.toggleButton}
             >

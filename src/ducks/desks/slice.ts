@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { getAllDesk } from '../../mocks/mocks'
 import axios from 'axios'
 
@@ -11,13 +11,12 @@ export type Desk = {
 }
 
 export type DesksState = {
-  desks: Desk[]
+  list: Desk[]
 }
 
 export const initialState: DesksState = {
-  desks: []
+  list: []
 }
-
 
 export const fetchDesksByEventId = createAsyncThunk<Desk[], number, any>(
   'fetchDesksByEventId',
@@ -34,17 +33,24 @@ export const fetchDesksByEventId = createAsyncThunk<Desk[], number, any>(
   }
 )
 
+// export const getDeskById = createAction<string | undefined>('getDeskById')
 
 const desksSlice = createSlice({
   name: 'desks',
   initialState,
   reducers: {
-  },
-  extraReducers: {
-    [fetchDesksByEventId.fulfilled]: (state, action) => {
-      state.desks = action.payload
+    getDeskById (state, action: PayloadAction<string>) {
+      state.list.filter(d => d.id === action.payload)[0]
     }
   },
+  extraReducers: (builder) => {
+    builder.addCase(fetchDesksByEventId.fulfilled, (state, action) => {
+      state.list = action.payload
+    })
+    // builder.addCase(getDeskById, (state, action) => {
+    //   state.desks.filter(d => d.id === action.payload)[0]
+    // })
+  }
 })
 
 export default desksSlice
